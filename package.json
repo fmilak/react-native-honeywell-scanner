@@ -1,4 +1,7 @@
 {
+  "publishConfig": {
+    "registry": "http://nexus.pinecone.int/repository/npm-hosted/"
+  },
   "name": "react-native-honeywell-scanner",
   "description": "A barcode scanner for Honeywell handheld devices like Honeywell Dolphin CT50",
   "version": "1.0.1",

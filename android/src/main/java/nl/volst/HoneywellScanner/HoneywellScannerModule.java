@@ -1,14 +1,9 @@
 package nl.volst.HoneywellScanner;
 
-import java.lang.reflect.Method;
-import java.util.Set;
 import javax.annotation.Nullable;
 import java.util.HashMap;
 import java.util.Map;
 
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.os.Build;
 import android.util.Log;
 
@@ -17,7 +12,6 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.WritableMap;
-import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 
@@ -29,6 +23,8 @@ import com.honeywell.aidc.BarcodeFailureEvent;
 import com.honeywell.aidc.BarcodeReadEvent;
 import com.honeywell.aidc.BarcodeReader;
 import com.honeywell.aidc.ScannerUnavailableException;
+
+import nl.volst.HoneywellScanner.model.ScannerProfile;
 
 @SuppressWarnings("unused")
 public class HoneywellScannerModule extends ReactContextBaseJavaModule implements BarcodeReader.BarcodeListener {
@@ -92,7 +88,11 @@ public class HoneywellScannerModule extends ReactContextBaseJavaModule implement
             public void onCreated(AidcManager aidcManager) {
                 manager = aidcManager;
                 reader = manager.createBarcodeReader();
-                if(reader != null){
+
+                ScannerProfile profile = new ScannerProfile(ScannerProfile.Profile.DEFAULT);
+                reader.setProperties(profile.getProfileProperties());
+
+                if(reader != null) {
                     reader.addBarcodeListener(HoneywellScannerModule.this);
                     try {
                         reader.claim();
