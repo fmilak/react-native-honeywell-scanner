@@ -36,7 +36,11 @@ public class ScannerProfile {
     }
 
     private Map<String, Object> getDefaultProperties() {
-        return null;
+        Map<String, Object> properties = new HashMap<>();
+
+        properties.put(BarcodeReader.PROPERTY_NOTIFICATION_GOOD_READ_ENABLED, false);
+
+        return properties;
     }
 
     public Map<String, Object> getProfileProperties() {
