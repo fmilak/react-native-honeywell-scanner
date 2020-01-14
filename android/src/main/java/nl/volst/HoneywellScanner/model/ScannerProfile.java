@@ -39,6 +39,7 @@ public class ScannerProfile {
         Map<String, Object> properties = new HashMap<>();
 
         properties.put(BarcodeReader.PROPERTY_NOTIFICATION_GOOD_READ_ENABLED, false);
+        properties.put(BarcodeReader.PROPERTY_EAN_13_CHECK_DIGIT_TRANSMIT_ENABLED, true);
 
         return properties;
     }

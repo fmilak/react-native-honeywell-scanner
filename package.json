@@ -4,7 +4,7 @@
   },
   "name": "react-native-honeywell-scanner",
   "description": "A barcode scanner for Honeywell handheld devices like Honeywell Dolphin CT50",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "main": "index.js",
   "author": "Kees Kluskens <kees@volst.nl>",
   "repository": "Volst/react-native-honeywell-scanner",
